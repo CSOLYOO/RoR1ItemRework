@@ -10,7 +10,6 @@ namespace RoR1ItemRework
 {
     public class ArmsRace
     {
-
         public class ArmsRaceItem
         {
             public static GameObject ArmsRacePrefab;
@@ -23,7 +22,7 @@ namespace RoR1ItemRework
             private const string IconPath = ModPrefix + "Assets/ArmsRace_Icon.png";
 
 
-            internal static void Init()
+            public static void ArmsRaceItemInit()
             {
                 using (System.IO.Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("RoR1ItemRework.armsrace"))
                 {
@@ -38,14 +37,14 @@ namespace RoR1ItemRework
 
             private static void ArmsRaceAsItem()
             {
-                R2API.AssetPlus.Languages.AddToken("ARMSRACE_NAME_TOKEN", "Arms Race", "English");
-                R2API.AssetPlus.Languages.AddToken("ARMSRACE_PICKUP_TOKEN", "On drone action: 9% chance for drones to fire missiles and mortars", "English");
-                R2API.AssetPlus.Languages.AddToken("ARMSRACE_DESCRIPTION_TOKEN", "On drone action: 9% chance for drones to fire missiles and mortars,deals 300%<style=cStack>（300% per stack）damage.</style>", "English");
-                R2API.AssetPlus.Languages.AddToken("ARMSRACE_LORE_TOKEN", "Drones are equipped with explosive weaponry.", "English");
-                R2API.AssetPlus.Languages.AddToken("ARMSRACE_NAME_TOKEN", "军备竞赛", "sChinese");
-                R2API.AssetPlus.Languages.AddToken("ARMSRACE_PICKUP_TOKEN", "无人机有概率发射导弹", "sChinese");
-                R2API.AssetPlus.Languages.AddToken("ARMSRACE_DESCRIPTION_TOKEN", "无人机有9%概率发射导弹，造成300%<style=cStack>（每层增加300%）</style>的伤害。", "sChinese");
-                R2API.AssetPlus.Languages.AddToken("ARMSRACE_LORE_TOKEN", "无人机被爆炸性武器武装了起来。.", "sChinese");
+                R2API.AssetPlus.Languages.AddToken("ARMSRACE_NAME_TOKEN", "Arms Race", "en");
+                R2API.AssetPlus.Languages.AddToken("ARMSRACE_PICKUP_TOKEN", "On drone action: 9% chance for drones to fire missiles and mortars", "en");
+                R2API.AssetPlus.Languages.AddToken("ARMSRACE_DESCRIPTION_TOKEN", "On drone action: 9% chance for drones to fire missiles and mortars,deals 300%<style=cStack>（300% per stack）damage.</style>", "en");
+                R2API.AssetPlus.Languages.AddToken("ARMSRACE_LORE_TOKEN", "Drones are equipped with explosive weaponry.", "en");
+                R2API.AssetPlus.Languages.AddToken("ARMSRACE_NAME_TOKEN", "军备竞赛", "zh-CN");
+                R2API.AssetPlus.Languages.AddToken("ARMSRACE_PICKUP_TOKEN", "无人机有概率发射导弹", "zh-CN");
+                R2API.AssetPlus.Languages.AddToken("ARMSRACE_DESCRIPTION_TOKEN", "无人机有9%概率发射导弹，造成300%<style=cStack>（每层增加300%）</style>的伤害。", "zh-CN");
+                R2API.AssetPlus.Languages.AddToken("ARMSRACE_LORE_TOKEN", "无人机被爆炸性武器武装了起来。", "zh-CN");
 
                 ItemDef ArmsRaceDef = new ItemDef
                 {

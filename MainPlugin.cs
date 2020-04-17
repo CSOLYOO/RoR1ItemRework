@@ -25,7 +25,7 @@ namespace RoR1ItemRework
         private const string ModGuid = "com.NetherCrowCSOLYOO.RoR1ItemRework";
         public void Awake()
         {
-            ArmsRace.ArmsRaceItem.Init();
+            ArmsRace.ArmsRaceItem.ArmsRaceItemInit();
         }
     }
 

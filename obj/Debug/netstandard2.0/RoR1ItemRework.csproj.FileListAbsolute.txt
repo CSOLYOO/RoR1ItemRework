@@ -78,3 +78,4 @@ C:\Users\nethe\source\repos\RoR1ItemRework\obj\Debug\netstandard2.0\RoR1ItemRewo
 C:\Users\nethe\source\repos\RoR1ItemRework\obj\Debug\netstandard2.0\RoR1ItemRework.csproj.CopyComplete
 C:\Users\nethe\source\repos\RoR1ItemRework\obj\Debug\netstandard2.0\RoR1ItemRework.dll
 C:\Users\nethe\source\repos\RoR1ItemRework\obj\Debug\netstandard2.0\RoR1ItemRework.pdb
+C:\Users\nethe\source\repos\RoR1ItemRework\obj\Debug\netstandard2.0\RoR1ItemRework.csprojAssemblyReference.cache
