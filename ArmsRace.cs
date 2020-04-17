@@ -25,7 +25,7 @@ namespace RoR1ItemRework
 
             internal static void Init()
             {
-                using (System.IO.Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("RoR1ItemRework.ArmsRace"))
+                using (System.IO.Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("RoR1ItemRework.armsrace"))
                 {
                     ArmsRaceBundle = AssetBundle.LoadFromStream(stream);
                     ArmsRaceProvider = new AssetBundleResourcesProvider(ModPrefix.Trim(':'), ArmsRaceBundle);

@@ -72,7 +72,6 @@ C:\Users\nethe\source\repos\RoR1ItemRework\bin\Debug\netstandard2.0\UnityEngine.
 C:\Users\nethe\source\repos\RoR1ItemRework\bin\Debug\netstandard2.0\BepInEx.xml
 C:\Users\nethe\source\repos\RoR1ItemRework\bin\Debug\netstandard2.0\MonoMod.Utils.xml
 C:\Users\nethe\source\repos\RoR1ItemRework\bin\Debug\netstandard2.0\R2API.xml
-C:\Users\nethe\source\repos\RoR1ItemRework\obj\Debug\netstandard2.0\RoR1ItemRework.csprojAssemblyReference.cache
 C:\Users\nethe\source\repos\RoR1ItemRework\obj\Debug\netstandard2.0\RoR1ItemRework.csproj.CoreCompileInputs.cache
 C:\Users\nethe\source\repos\RoR1ItemRework\obj\Debug\netstandard2.0\RoR1ItemRework.AssemblyInfoInputs.cache
 C:\Users\nethe\source\repos\RoR1ItemRework\obj\Debug\netstandard2.0\RoR1ItemRework.AssemblyInfo.cs
