@@ -26,6 +26,7 @@ namespace RoR1ItemRework
         public void Awake()
         {
             ArmsRace.ArmsRaceItem.ArmsRaceItemInit();
+            ArmsRace.ArmsRaceItem.ArmsRaceItemHook();
         }
     }
 
