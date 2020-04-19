@@ -90,7 +90,7 @@ namespace RoR1ItemRework
             {
                 R2API.AssetPlus.Languages.AddToken("ARMSRACE_NAME_TOKEN", "Arms Race");
                 R2API.AssetPlus.Languages.AddToken("ARMSRACE_PICKUP_TOKEN", "On drone action: 9% chance for drones to fire missiles and mortars");
-                R2API.AssetPlus.Languages.AddToken("ARMSRACE_DESCRIPTION_TOKEN", "On drone action: 9% chance for drones to fire missiles and mortars,deals 300%<style=cStack>（300% per stack）damage.</style>");
+                R2API.AssetPlus.Languages.AddToken("ARMSRACE_DESCRIPTION_TOKEN", "On drone action: 9% chance for drones to fire missiles and mortars,deals 300%<style=cStack>(300% per stack)</style>damage.");
                 R2API.AssetPlus.Languages.AddToken("ARMSRACE_LORE_TOKEN", "Drones are equipped with explosive weaponry.");
                 R2API.AssetPlus.Languages.AddToken("ARMSRACE_NAME_TOKEN", "军备竞赛", "zh-CN");
                 R2API.AssetPlus.Languages.AddToken("ARMSRACE_PICKUP_TOKEN", "无人机有概率发射导弹", "zh-CN");

@@ -27,6 +27,7 @@ namespace RoR1ItemRework
         {
             ArmsRace.ArmsRaceItem.ArmsRaceItemInit();
             ArmsRace.ArmsRaceItem.ArmsRaceItemHook();
+            Vial.VialItem.VialItemInit();
         }
     }
 
