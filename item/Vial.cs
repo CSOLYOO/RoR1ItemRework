@@ -27,30 +27,13 @@ namespace RoR1ItemRework
             public static void VialItemInit()
             {
                 VialAsItem();
+            }
 
-                IL.RoR2.CharacterBody.RecalculateStats += (li) =>
+            public static void VialItemHook()
+            {
+                void VialHook(ILContext li)
                 {
                     ILCursor c = new ILCursor(li);
-                    c.GotoNext(
-                        x => x.MatchLdcR4(1),
-                        x => x.MatchStloc(48)
-                    );
-                    c.Index += 2;
-                    c.Emit(OpCodes.Ldc_R4,0f);
-                    c.Emit(OpCodes.Stloc_S, (byte)100);
-                    c.EmitDelegate<Func<float, RoR2.CharacterBody, float>>(
-                        (RegenStats,self) =>
-                        {
-                            if (self.inventory)
-                            {
-                                RegenStats += self.inventory.GetItemCount(VialItemIndex) * 1.2f;
-                                return RegenStats;
-                            }
-                            else return 0f;
-                        }
-                        );
-                    c.Emit(OpCodes.Stloc_S, (byte)100);
-
                     c.GotoNext(
                         x => x.MatchLdloc(44),
                         x => x.MatchAdd(),
@@ -58,19 +41,26 @@ namespace RoR1ItemRework
                         x => x.MatchAdd(),
                         x => x.MatchLdloc(46),
                         x => x.MatchAdd(),
-                        x => x.MatchLdloc(47), 
+                        x => x.MatchLdloc(47),
                         x => x.MatchAdd(),
                         x => x.MatchLdloc(48),
                         x => x.MatchMul()
                     );
                     c.Index += 8;
-                    c.Emit(OpCodes.Ldloc_S, (byte)100);
+                    c.EmitDelegate<Func<RoR2.CharacterBody, float>>((self) =>
+                        {
+                            if (self.inventory)
+                            {
+                                float RegenStats = self.inventory.GetItemCount(VialItemIndex) * 1.2f;
+                                return RegenStats;
+                            }
+                            else return 0f;
+                        });
                     c.Emit(OpCodes.Add);
 
                 };
+                IL.RoR2.CharacterBody.RecalculateStats += VialHook;
             }
-
-
 
             private static void VialAsItem()
             {
