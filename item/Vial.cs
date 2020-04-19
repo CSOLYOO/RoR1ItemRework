@@ -26,35 +26,30 @@ namespace RoR1ItemRework
 
             public static void VialItemInit()
             {
-                using (System.IO.Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("RoR1ItemRework.vial"))
-                {
-                    VialBundle = AssetBundle.LoadFromStream(stream);
-                    VialProvider = new AssetBundleResourcesProvider(ModPrefix.Trim(':'), VialBundle);
-                    ResourcesAPI.AddProvider(VialProvider);
-                    VialPrefab = VialBundle.LoadAsset<GameObject>("Assets/Vial.prefab");
-                };
-
                 VialAsItem();
 
                 IL.RoR2.CharacterBody.RecalculateStats += (li) =>
                 {
                     ILCursor c = new ILCursor(li);
                     c.GotoNext(
-                        x => x.MatchLdcI4(0),
-                        x => x.MatchStloc(30)
+                        x => x.MatchLdcR4(1),
+                        x => x.MatchStloc(48)
                     );
                     c.Index += 2;
-                    c.Emit(OpCodes.Ldloc, 30);
+                    c.Emit(OpCodes.Ldc_R4, 0);
+                    c.Emit(OpCodes.Stloc_S, 100);
+                    c.Emit(OpCodes.Ldloc_S, 100);
                     c.Emit(OpCodes.Ldarg, 0);
                     c.EmitDelegate<Func<float, RoR2.CharacterBody, float>>(
-                        (RegenStat, self) =>
+                        (RegenStats,self) =>
                         {
                             if (self.inventory)
-                                RegenStat = 1.2f * self.inventory.GetItemCount(VialItemIndex);
-                            return RegenStat;
+                                RegenStats += self.inventory.GetItemCount(VialItemIndex) * 1.2f;
+                            return RegenStats;
                         }
                         );
-                    c.Emit(OpCodes.Stloc, 30);
+                    c.Emit(OpCodes.Stloc_S, 100);
+
                     c.GotoNext(
                         x => x.MatchLdloc(44),
                         x => x.MatchAdd(),
@@ -62,11 +57,13 @@ namespace RoR1ItemRework
                         x => x.MatchAdd(),
                         x => x.MatchLdloc(46),
                         x => x.MatchAdd(),
-                        x => x.MatchLdloc(47),
-                        x => x.MatchAdd()
+                        x => x.MatchLdloc(47), 
+                        x => x.MatchAdd(),
+                        x => x.MatchLdloc(48),
+                        x => x.MatchMul()
                     );
                     c.Index += 8;
-                    c.Emit(OpCodes.Ldloc, 30);
+                    c.Emit(OpCodes.Ldloc_S, 100);
                     c.Emit(OpCodes.Add);
 
                 };
@@ -76,14 +73,14 @@ namespace RoR1ItemRework
 
             private static void VialAsItem()
             {
-                R2API.AssetPlus.Languages.AddToken("Vial_NAME_TOKEN", "Mysterious Vial");
-                R2API.AssetPlus.Languages.AddToken("Vial_PICKUP_TOKEN", "+1.2 HPregen/sec");
-                R2API.AssetPlus.Languages.AddToken("Vial_DESCRIPTION_TOKEN", "+1.2 <style=cStack>(+1.2 per stack)</style>HPregen.");
-                R2API.AssetPlus.Languages.AddToken("Vial_LORE_TOKEN", "WOW");
-                R2API.AssetPlus.Languages.AddToken("Vial_NAME_TOKEN", "神秘药剂", "zh-CN");
-                R2API.AssetPlus.Languages.AddToken("Vial_PICKUP_TOKEN", "增加回血速度", "zh-CN");
-                R2API.AssetPlus.Languages.AddToken("Vial_DESCRIPTION_TOKEN", "+1.2<style=cStack>（每层增加1.2）</style>回血速度。", "zh-CN");
-                R2API.AssetPlus.Languages.AddToken("Vial_LORE_TOKEN", "哇哦", "zh-CN");
+                R2API.AssetPlus.Languages.AddToken("VIAL_NAME_TOKEN", "Mysterious Vial");
+                R2API.AssetPlus.Languages.AddToken("VIAL_PICKUP_TOKEN", "+1.2 HPregen/sec");
+                R2API.AssetPlus.Languages.AddToken("VIAL_DESCRIPTION_TOKEN", "+1.2 <style=cStack>(+1.2 per stack)</style>HPregen.");
+                R2API.AssetPlus.Languages.AddToken("VIAL_LORE_TOKEN", "WOW");
+                R2API.AssetPlus.Languages.AddToken("VIAL_NAME_TOKEN", "神秘药剂", "zh-CN");
+                R2API.AssetPlus.Languages.AddToken("VIAL_PICKUP_TOKEN", "增加回血速度", "zh-CN");
+                R2API.AssetPlus.Languages.AddToken("VIAL_DESCRIPTION_TOKEN", "+1.2<style=cStack>（每层增加1.2）</style>回血速度。", "zh-CN");
+                R2API.AssetPlus.Languages.AddToken("VIAL_LORE_TOKEN", "哇哦", "zh-CN");
 
                 ItemDef VialDef = new ItemDef
                 {

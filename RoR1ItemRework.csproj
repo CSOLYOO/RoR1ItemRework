@@ -8,12 +8,12 @@
     <None Remove="armsrace" />
     <None Remove="resource\armsrace" />
     <None Remove="resource\vial" />
+    <None Remove="ror1item" />
     <None Remove="vial" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="armsrace" />
-    <EmbeddedResource Include="vial" />
+    <EmbeddedResource Include="ror1item" />
   </ItemGroup>
 
   <ItemGroup>

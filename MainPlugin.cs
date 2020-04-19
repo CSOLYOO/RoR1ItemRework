@@ -23,8 +23,19 @@ namespace RoR1ItemRework
         private const string ModVer = "1.0.0";
         private const string ModName = "RoR1ItemRework";
         private const string ModGuid = "com.NetherCrowCSOLYOO.RoR1ItemRework";
+        public static AssetBundleResourcesProvider Provider;
+        public static AssetBundle Bundle;
+        private const string ModPrefix = "@RoR1ItemRework:";
+
         public void Awake()
         {
+            using (System.IO.Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("RoR1ItemRework.ror1item"))
+            {
+                Bundle = AssetBundle.LoadFromStream(stream);
+                Provider = new AssetBundleResourcesProvider(ModPrefix.Trim(':'), Bundle);
+                ResourcesAPI.AddProvider(Provider);
+            };
+
             ArmsRace.ArmsRaceItem.ArmsRaceItemInit();
             ArmsRace.ArmsRaceItem.ArmsRaceItemHook();
             Vial.VialItem.VialItemInit();

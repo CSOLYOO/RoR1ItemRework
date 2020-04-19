@@ -12,8 +12,7 @@ namespace RoR1ItemRework
         {
             public static GameObject ArmsRacePrefab;
             public static ItemIndex ArmsRaceItemIndex;
-            public static AssetBundleResourcesProvider ArmsRaceProvider;
-            public static AssetBundle ArmsRaceBundle;
+
             private const string ModPrefix = "@RoR1ItemRework:";
             private const string PrefabPath = ModPrefix + "Assets/ArmsRace.prefab";
             private const string IconPath = ModPrefix + "Assets/ArmsRace_Icon.png";
@@ -23,14 +22,6 @@ namespace RoR1ItemRework
 
             public static void ArmsRaceItemInit()
             {
-                using (System.IO.Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("RoR1ItemRework.armsrace"))
-                {
-                    ArmsRaceBundle = AssetBundle.LoadFromStream(stream);
-                    ArmsRaceProvider = new AssetBundleResourcesProvider(ModPrefix.Trim(':'), ArmsRaceBundle);
-                    ResourcesAPI.AddProvider(ArmsRaceProvider);
-                    ArmsRacePrefab = ArmsRaceBundle.LoadAsset<GameObject>("Assets/ArmsRace.prefab");
-                };
-
                 ArmsRaceAsItem();
             }
 
