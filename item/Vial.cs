@@ -36,10 +36,10 @@ namespace RoR1ItemRework
                         x => x.MatchStloc(48)
                     );
                     c.Index += 2;
-                    c.Emit(OpCodes.Ldc_R4, 0);
+                    c.Emit(OpCodes.Ldc_R4,0f);
                     c.Emit(OpCodes.Stloc_S, 100);
                     c.Emit(OpCodes.Ldloc_S, 100);
-                    c.Emit(OpCodes.Ldarg, 0);
+                    c.Emit(OpCodes.Ldarg_0);
                     c.EmitDelegate<Func<float, RoR2.CharacterBody, float>>(
                         (RegenStats,self) =>
                         {

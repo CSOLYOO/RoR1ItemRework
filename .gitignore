@@ -2,3 +2,5 @@ bin/
 .vs/
 obj/
 obj/Debug/netstandard2.0/RoR1ItemRework.dll
+obj/Debug/netstandard2.0/RoR1ItemRework.pdb
+obj/Debug/netstandard2.0/RoR1ItemRework.dll
