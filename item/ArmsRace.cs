@@ -1,6 +1,7 @@
 ﻿using R2API;
 using RoR2;
 using RoR2.Projectile;
+using System;
 using System.Reflection;
 using UnityEngine;
 
@@ -81,11 +82,11 @@ namespace RoR1ItemRework
             {
                 R2API.AssetPlus.Languages.AddToken("ARMSRACE_NAME_TOKEN", "Arms Race");
                 R2API.AssetPlus.Languages.AddToken("ARMSRACE_PICKUP_TOKEN", "Drones are equipped with explosive weaponry.");
-                R2API.AssetPlus.Languages.AddToken("ARMSRACE_DESCRIPTION_TOKEN", "On drone action: 9% chance for drones and turrets to fire missiles and mortars,deals <style=cisDamage>300%</style><style=cStack>(300% per stack)</style>damage.");
+                R2API.AssetPlus.Languages.AddToken("ARMSRACE_DESCRIPTION_TOKEN", "On drone action: 9% chance for drones and turrets to fire missiles and mortars,deals <style=cIsDamage>300%</style><style=cStack>(300% per stack)</style>damage.");
                 R2API.AssetPlus.Languages.AddToken("ARMSRACE_LORE_TOKEN", "Drones are equipped with explosive weaponry.");
                 R2API.AssetPlus.Languages.AddToken("ARMSRACE_NAME_TOKEN", "军备竞赛", "zh-CN");
-                R2API.AssetPlus.Languages.AddToken("ARMSRACE_PICKUP_TOKEN", "无人机攻击有概率发射导弹", "zh-CN");
-                R2API.AssetPlus.Languages.AddToken("ARMSRACE_DESCRIPTION_TOKEN", "无人机有9%概率发射导弹，造成<style=cisDamage>300%</style><style=cStack>（每层增加300%）</style>的伤害。", "zh-CN");
+                R2API.AssetPlus.Languages.AddToken("ARMSRACE_PICKUP_TOKEN", "无人机装备了爆炸性武器", "zh-CN");
+                R2API.AssetPlus.Languages.AddToken("ARMSRACE_DESCRIPTION_TOKEN", "无人机和炮塔有9%概率发射导弹，造成<style=cIsDamage>300%</style><style=cStack>（每层增加300%）</style>的伤害。", "zh-CN");
                 R2API.AssetPlus.Languages.AddToken("ARMSRACE_LORE_TOKEN", "无人机被爆炸性武器武装了起来。", "zh-CN");
 
                 ItemDef ArmsRaceDef = new ItemDef
@@ -97,7 +98,12 @@ namespace RoR1ItemRework
                     pickupToken = "ARMSRACE_PICKUP_TOKEN",
                     descriptionToken = "ARMSRACE_DESCRIPTION_TOKEN",
                     loreToken = "ARMSRACE_LORE_TOKEN",
-                    tier = ItemTier.Tier2
+                    tier = ItemTier.Tier2,
+                    tags = new ItemTag[]
+                    {
+                        ItemTag.Damage,
+                        ItemTag.Utility
+                    }
                 };
                 ItemDisplayRule[] DisplayRules = null;
                 CustomItem ArmsRaceItem = new CustomItem(ArmsRaceDef, DisplayRules);

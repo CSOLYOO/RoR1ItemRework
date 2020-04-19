@@ -90,7 +90,11 @@ namespace RoR1ItemRework
                     pickupToken = "VIAL_PICKUP_TOKEN",
                     descriptionToken = "VIAL_DESCRIPTION_TOKEN",
                     loreToken = "VIAL_LORE_TOKEN",
-                    tier = ItemTier.Tier1
+                    tier = ItemTier.Tier1,
+                    tags = new ItemTag[]
+                    {
+                        ItemTag.Healing
+                    }
                 };
                 ItemDisplayRule[] DisplayRules = null;
                 CustomItem VialItem = new CustomItem(VialDef, DisplayRules);
