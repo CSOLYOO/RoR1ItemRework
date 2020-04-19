@@ -19,13 +19,18 @@ namespace RoR1ItemRework
             private const string ModPrefix = "@RoR1ItemRework:";
             private const string PrefabPath = ModPrefix + "Assets/Thallium.prefab";
             private const string IconPath = ModPrefix + "Assets/Thallium_Icon.png";
+            private const string BuffIconPath = ModPrefix + "Assets/ThalliumBuff.png";
+            private static BuffIndex ThalliumDebuff;
+
 
 
 
 
             public static void ThalliumItemInit()
             {
+                ThalliumAsBuff();
                 ThalliumAsItem();
+                
             }
 
             public static void ThalliumItemHook()
@@ -63,6 +68,18 @@ namespace RoR1ItemRework
                 CustomItem ThalliumItem = new CustomItem(ThalliumDef, DisplayRules);
                 ThalliumItemIndex = ItemAPI.Add(ThalliumItem);
 
+            }
+            private static void ThalliumAsBuff()
+            {
+                BuffDef ThalliumBuffDef = new BuffDef
+                {
+                    iconPath = BuffIconPath,
+                    canStack = true,
+                    eliteIndex = EliteIndex.None,
+                    isDebuff = true,
+                    name = "ThalliumDeBuff"
+                };
+                ThalliumDebuff = ItemAPI.Add(new CustomBuff(ThalliumBuffDef.name, ThalliumBuffDef));
             }
         }
 
