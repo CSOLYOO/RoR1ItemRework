@@ -5,15 +5,19 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="armsrace" />
-    <None Remove="resource\armsrace" />
-    <None Remove="resource\vial" />
-    <None Remove="ror1item" />
-    <None Remove="vial" />
+    <Compile Remove="resource\**" />
+    <EmbeddedResource Remove="resource\**" />
+    <None Remove="resource\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="ror1item" />
+    <Compile Remove="item\Thallium.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="armsrace" />
+    <None Remove="ror1item" />
+    <None Remove="vial" />
   </ItemGroup>
 
   <ItemGroup>
@@ -59,7 +63,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="resource\" />
+    <None Include="item\Thallium.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="ror1item" />
   </ItemGroup>
 
 </Project>

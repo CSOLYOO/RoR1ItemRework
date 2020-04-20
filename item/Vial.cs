@@ -31,40 +31,59 @@ namespace RoR1ItemRework
             {
                 void VialHook(ILContext li)
                 {
-                    ILCursor c = new ILCursor(li);
-                    c.GotoNext(
+                    var c = new ILCursor(li);
+                    c.IL.Body.Variables.Add(new VariableDefinition(c.IL.Body.Method.Module.TypeSystem.Single));
+                    int locCount = c.IL.Body.Variables.Count - 1;
+                    bool ILfound = c.TryGotoNext(MoveType.After,
+                        x => x.OpCode == OpCodes.Ldloc_S,
+                        x => x.MatchMul(),
+                        x => x.OpCode == OpCodes.Stloc_S,
                         x => x.MatchLdcR4(1f),
-                        x => x.MatchStloc(48)
-                        );
-                    c.Index += 2;
-                    c.Emit(OpCodes.Ldarg_0);
-                    c.EmitDelegate<Func<RoR2.CharacterBody, float>>((self) =>
+                        x => x.OpCode == OpCodes.Stloc_S
+                        ) ;
+                    if (ILfound)
                     {
-                        if (self.inventory)
+                        c.Emit(OpCodes.Ldarg_0);
+                        c.EmitDelegate<Func<RoR2.CharacterBody, float>>((self) =>
                         {
-                            float RegenStats = self.inventory.GetItemCount(VialItemIndex) * 1.2f;
-                            return RegenStats;
-                        }
-                        else return 0f;
-                    });
-                    c.Emit(OpCodes.Stloc,49);
-
-
-                    c.GotoNext(
-                        x => x.MatchLdloc(44),
+                            if (self.inventory)
+                            {
+                                float RegenStats = self.inventory.GetItemCount(VialItemIndex) * 1.2f;
+                                return RegenStats;
+                            }
+                            else return 0f;
+                        });
+                        c.Emit(OpCodes.Stloc, locCount);
+                    }
+                    else
+                    {
+                        Debug.LogError("RoR1ItemRework fail IL of Vial(Load Inventory)");
+                        return;
+                    }
+                    ILfound = c.TryGotoNext(
+                        x => x.OpCode == OpCodes.Ldloc_S,
                         x => x.MatchAdd(),
-                        x => x.MatchLdloc(45),
+                        x => x.OpCode == OpCodes.Ldloc_S,
                         x => x.MatchAdd(),
-                        x => x.MatchLdloc(46),
+                        x => x.OpCode == OpCodes.Ldloc_S,
                         x => x.MatchAdd(),
-                        x => x.MatchLdloc(47),
+                        x => x.OpCode == OpCodes.Ldloc_S,
                         x => x.MatchAdd(),
-                        x => x.MatchLdloc(48),
-                        x => x.MatchMul()
+                        x => x.OpCode == OpCodes.Ldloc_S,
+                        x => x.MatchMul(),
+                        x => x.OpCode == OpCodes.Stloc_S
                     );
-                    c.Index += 8;
-                    c.Emit(OpCodes.Ldloc,49);
-                    c.Emit(OpCodes.Add);
+                    if (ILfound)
+                    {
+                        c.Index += 8;
+                        c.Emit(OpCodes.Ldloc, locCount);
+                        c.Emit(OpCodes.Add);
+                    }
+                    else
+                    {
+                        Debug.LogError("RoR1ItemRework fail IL of Vial(Add stats)");
+                        return;
+                    }
 
                 };
                 IL.RoR2.CharacterBody.RecalculateStats += VialHook;
