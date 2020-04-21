@@ -41,6 +41,7 @@ namespace RoR1ItemRework
             Vial.VialItem.VialItemInit();
             Vial.VialItem.VialItemHook();
             Thallium.ThalliumItem.ThalliumItemInit();
+            item.ClassicCritThing.CritInit();
         }
     }
 
