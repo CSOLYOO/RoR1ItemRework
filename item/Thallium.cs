@@ -44,7 +44,7 @@ namespace RoR1ItemRework
                             if ((itemcount > 0) && (Util.CheckRoll(5f * damage.procCoefficient, AttackerMaster)))
                             {
                                 ProcChainMask procChainMask = damage.procChainMask;
-                                DotController.InflictDot(victim, damage.attacker, DotController.DotIndex.Blight, 3f * damage.procCoefficient, 3.33f);
+                                DotController.InflictDot(victim, damage.attacker, DotController.DotIndex.Blight, 3f * damage.procCoefficient, 3.33f * itemcount);
                                 VictimBody.AddTimedBuff(ThalliumDebuff, 3f * damage.procCoefficient);
                             }
                         }
@@ -56,16 +56,18 @@ namespace RoR1ItemRework
                     var c = new ILCursor(il);
                     c.IL.Body.Variables.Add(new VariableDefinition(c.IL.Body.Method.Module.TypeSystem.Single));
                     int locCount = c.IL.Body.Variables.Count - 1;
-                    bool ILfound = c.TryGotoNext(MoveType.After,
+                    bool ILfound = c.TryGotoNext(
                         x => x.MatchLdarg(0),
                         x => x.MatchLdcI4(0x18),
                         x => x.MatchCallOrCallvirt<CharacterBody>("HasBuff"),
-                        x => x.OpCode == OpCodes.Brfalse
+                        x => x.OpCode == OpCodes.Brfalse_S,
+                        x => x.OpCode == OpCodes.Ldloc_S
                         ); 
                     if (ILfound)
                     {
-                        c.Emit(OpCodes.Ldarg_0);
+                        c.Index += 4;
                         c.Emit(OpCodes.Ldloc,52);
+                        c.Emit(OpCodes.Ldarg_0);
                         c.EmitDelegate<Func<RoR2.CharacterBody, float>>((self) =>
                         {
                             if (self.HasBuff(ThalliumDebuff))
@@ -99,7 +101,7 @@ namespace RoR1ItemRework
                 R2API.AssetPlus.Languages.AddToken("THALLIUM_LORE_TOKEN", "Shipping Method: High Priority / Fragile\r\nOrder Details: She shouldn't notice.");
                 R2API.AssetPlus.Languages.AddToken("THALLIUM_NAME_TOKEN", "铊", "zh-CN");
                 R2API.AssetPlus.Languages.AddToken("THALLIUM_PICKUP_TOKEN", "几率减速敌人，并且使敌人中毒。", "zh-CN");
-                R2API.AssetPlus.Languages.AddToken("THALLIUM_DESCRIPTION_TOKEN", "有<style=cIsDamage>5%</style> 几率使得敌人<style=cIsDamage>金属中毒</style>，并<style=cIsUtility>减速</style>其<style=cIsUtility>100%</style>，造成<style=cIsDamage>600%</style> <style=cStack>(+600% per stack)</style> 总伤害。", "zh-CN");
+                R2API.AssetPlus.Languages.AddToken("THALLIUM_DESCRIPTION_TOKEN", "有<style=cIsDamage>5%</style> 几率使得敌人<style=cIsDamage>金属中毒</style>，并<style=cIsUtility>减速</style>其<style=cIsUtility>100%</style>，造成<style=cIsDamage>600%</style> <style=cStack>(每层增加600%)</style> 总伤害。", "zh-CN");
                 R2API.AssetPlus.Languages.AddToken("THALLIUM_LORE_TOKEN", "运输方式：高优先级 / 脆弱\r\n商品细节：她不会注意到的。", "zh-CN");
 
                 ItemDef ThalliumDef = new ItemDef

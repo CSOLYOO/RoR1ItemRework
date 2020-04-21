@@ -40,6 +40,7 @@ namespace RoR1ItemRework
             ArmsRace.ArmsRaceItem.ArmsRaceItemHook();
             Vial.VialItem.VialItemInit();
             Vial.VialItem.VialItemHook();
+            Thallium.ThalliumItem.ThalliumItemInit();
         }
     }
 

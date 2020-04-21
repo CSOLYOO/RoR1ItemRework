@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 2971282239
+CRC: 1751398317
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 9546f2af81fbdecc3af2a8d07e672bf4
+    Hash: 44f82baad096517b9964361a6cde2b22
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 21747e4ee48f36c7a65f9afbfd77f392
+    Hash: b59af850a88b34607f046ee9df62affb
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -25,9 +25,13 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 48
   Script: {instanceID: 0}
+- Class: 136
+  Script: {instanceID: 0}
 - Class: 213
   Script: {instanceID: 0}
 Assets:
+- Assets/Thallium.prefab
+- Assets/Thallium_Icon.png
 - Assets/ThalliumBuff.png
 - Assets/ArmsRace_Icon.png
 - Assets/Vial_Icon.png
