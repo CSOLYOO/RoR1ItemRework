@@ -1,9 +1,8 @@
-﻿using BepInEx;
-using BepInEx.Configuration;
-using R2API;
-using R2API.Utils;
+﻿using R2API;
 using RoR2;
-using System.Reflection;
+using Mono.Cecil.Cil;
+using MonoMod.Cil;
+using System;
 using UnityEngine;
 
 namespace RoR1ItemRework
@@ -12,10 +11,7 @@ namespace RoR1ItemRework
     {
         public class ThalliumItem
         {
-            public static GameObject ThalliumPrefab;
             public static ItemIndex ThalliumItemIndex;
-            public static AssetBundleResourcesProvider ThalliumProvider;
-            public static AssetBundle ThalliumBundle;
             private const string ModPrefix = "@RoR1ItemRework:";
             private const string PrefabPath = ModPrefix + "Assets/Thallium.prefab";
             private const string IconPath = ModPrefix + "Assets/Thallium_Icon.png";
@@ -30,12 +26,69 @@ namespace RoR1ItemRework
             {
                 ThalliumAsBuff();
                 ThalliumAsItem();
-                
+                ThalliumItemHook();
             }
 
             public static void ThalliumItemHook()
             {
-                
+                On.RoR2.GlobalEventManager.OnHitEnemy += (orig, self, damage, victim) =>
+                {
+                    if (damage.attacker)
+                    {
+                        CharacterBody Attacker = damage.attacker.GetComponent<CharacterBody>();
+                        CharacterMaster AttackerMaster = Attacker.master;
+                        CharacterBody VictimBody = victim ? victim.GetComponent<CharacterBody>() : null;
+                        if (Attacker && AttackerMaster)
+                        {
+                            int itemcount = Attacker.inventory.GetItemCount(ThalliumItemIndex);
+                            if ((itemcount > 0) && (Util.CheckRoll(5f * damage.procCoefficient, AttackerMaster)))
+                            {
+                                ProcChainMask procChainMask = damage.procChainMask;
+                                DotController.InflictDot(victim, damage.attacker, DotController.DotIndex.Blight, 3f * damage.procCoefficient, 3.33f);
+                                VictimBody.AddTimedBuff(ThalliumDebuff, 3f * damage.procCoefficient);
+                            }
+                        }
+                    }
+                    orig(self, damage, victim);
+                };
+                void ThalliumILHook(ILContext il)
+                {
+                    var c = new ILCursor(il);
+                    c.IL.Body.Variables.Add(new VariableDefinition(c.IL.Body.Method.Module.TypeSystem.Single));
+                    int locCount = c.IL.Body.Variables.Count - 1;
+                    bool ILfound = c.TryGotoNext(MoveType.After,
+                        x => x.MatchLdarg(0),
+                        x => x.MatchLdcI4(0x18),
+                        x => x.MatchCallOrCallvirt<CharacterBody>("HasBuff"),
+                        x => x.OpCode == OpCodes.Brfalse
+                        ); 
+                    if (ILfound)
+                    {
+                        c.Emit(OpCodes.Ldarg_0);
+                        c.Emit(OpCodes.Ldloc,52);
+                        c.EmitDelegate<Func<RoR2.CharacterBody, float>>((self) =>
+                        {
+                            if (self.HasBuff(ThalliumDebuff))
+                            {
+                                return 1f;
+                            }
+                            else
+                            {
+                                return 0f;
+                            }
+                        });
+                        c.Emit(OpCodes.Add);
+                        c.Emit(OpCodes.Stloc, 52);
+
+                    }
+                    else
+                    {
+                        Debug.LogError("RoR1ItemRework fail IL of Thallium(Load Buff)");
+                        return;
+                    }
+                }
+                IL.RoR2.CharacterBody.RecalculateStats += ThalliumILHook;
+
             }
 
             private static void ThalliumAsItem()
@@ -74,7 +127,7 @@ namespace RoR1ItemRework
                 BuffDef ThalliumBuffDef = new BuffDef
                 {
                     iconPath = BuffIconPath,
-                    canStack = true,
+                    canStack = false,
                     eliteIndex = EliteIndex.None,
                     isDebuff = true,
                     name = "ThalliumDeBuff"

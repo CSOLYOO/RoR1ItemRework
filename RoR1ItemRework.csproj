@@ -11,10 +11,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Remove="item\Thallium.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Remove="armsrace" />
     <None Remove="ror1item" />
     <None Remove="vial" />
@@ -60,10 +56,6 @@
     <Reference Include="Zio">
       <HintPath>D:\steam files\steamapps\common\Risk of Rain 2\Risk of Rain 2_Data\Managed\Zio.dll</HintPath>
     </Reference>
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="item\Thallium.cs" />
   </ItemGroup>
 
   <ItemGroup>

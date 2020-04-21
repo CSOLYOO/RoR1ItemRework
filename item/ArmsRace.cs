@@ -11,9 +11,7 @@ namespace RoR1ItemRework
     {
         public class ArmsRaceItem
         {
-            public static GameObject ArmsRacePrefab;
             public static ItemIndex ArmsRaceItemIndex;
-
             private const string ModPrefix = "@RoR1ItemRework:";
             private const string PrefabPath = ModPrefix + "Assets/ArmsRace.prefab";
             private const string IconPath = ModPrefix + "Assets/ArmsRace_Icon.png";

@@ -11,10 +11,7 @@ namespace RoR1ItemRework
     {
         public class VialItem
         {
-            public static GameObject VialPrefab;
             public static ItemIndex VialItemIndex;
-            public static AssetBundleResourcesProvider VialProvider;
-            public static AssetBundle VialBundle;
             private const string ModPrefix = "@RoR1ItemRework:";
             private const string PrefabPath = ModPrefix + "Assets/Vial.prefab";
             private const string IconPath = ModPrefix + "Assets/Vial_Icon.png";
