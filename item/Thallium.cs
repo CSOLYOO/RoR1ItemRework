@@ -54,40 +54,18 @@ namespace RoR1ItemRework
                 void ThalliumILHook(ILContext il)
                 {
                     var c = new ILCursor(il);
-                    c.IL.Body.Variables.Add(new VariableDefinition(c.IL.Body.Method.Module.TypeSystem.Single));
-                    int locCount = c.IL.Body.Variables.Count - 1;
-                    bool ILfound = c.TryGotoNext(
-                        x => x.MatchLdarg(0),
-                        x => x.MatchLdcI4(0x18),
-                        x => x.MatchCallOrCallvirt<CharacterBody>("HasBuff"),
-                        x => x.OpCode == OpCodes.Brfalse_S,
-                        x => x.OpCode == OpCodes.Ldloc_S
-                        ); 
-                    if (ILfound)
+                    c.GotoNext(x => x.MatchCallvirt<CharacterBody>("set_moveSpeed"));
+                    c.Emit(OpCodes.Ldarg_0);
+                    c.EmitDelegate<Func<CharacterBody, float>>((cb) =>
                     {
-                        c.Index += 4;
-                        c.Emit(OpCodes.Ldloc,52);
-                        c.Emit(OpCodes.Ldarg_0);
-                        c.EmitDelegate<Func<RoR2.CharacterBody, float>>((self) =>
+                        if (cb.HasBuff(ThalliumDebuff))
                         {
-                            if (self.HasBuff(ThalliumDebuff))
-                            {
-                                return 1f;
-                            }
-                            else
-                            {
-                                return 0f;
-                            }
-                        });
-                        c.Emit(OpCodes.Add);
-                        c.Emit(OpCodes.Stloc, 52);
+                            return 0.5f;
+                        }
+                        return 1.0f;
+                    });
+                    c.Emit(OpCodes.Mul);
 
-                    }
-                    else
-                    {
-                        Debug.LogError("RoR1ItemRework fail IL of Thallium(Load Buff)");
-                        return;
-                    }
                 }
                 IL.RoR2.CharacterBody.RecalculateStats += ThalliumILHook;
 
