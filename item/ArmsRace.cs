@@ -78,14 +78,14 @@ namespace RoR1ItemRework
 
             private static void ArmsRaceAsItem()
             {
-                R2API.AssetPlus.Languages.AddToken("ARMSRACE_NAME_TOKEN", "Arms Race");
-                R2API.AssetPlus.Languages.AddToken("ARMSRACE_PICKUP_TOKEN", "Drones are equipped with explosive weaponry.");
-                R2API.AssetPlus.Languages.AddToken("ARMSRACE_DESCRIPTION_TOKEN", "On drone action: 15% chance for drones and turrets to fire missiles and mortars,deals <style=cIsDamage>300%</style><style=cStack>(300% per stack)</style>damage.");
-                R2API.AssetPlus.Languages.AddToken("ARMSRACE_LORE_TOKEN", "Drones are equipped with explosive weaponry.");
-                R2API.AssetPlus.Languages.AddToken("ARMSRACE_NAME_TOKEN", "军备竞赛", "zh-CN");
-                R2API.AssetPlus.Languages.AddToken("ARMSRACE_PICKUP_TOKEN", "无人机装备了爆炸性武器", "zh-CN");
-                R2API.AssetPlus.Languages.AddToken("ARMSRACE_DESCRIPTION_TOKEN", "无人机和炮塔有15%概率发射导弹，造成<style=cIsDamage>300%</style><style=cStack>（每层增加300%）</style>的伤害。", "zh-CN");
-                R2API.AssetPlus.Languages.AddToken("ARMSRACE_LORE_TOKEN", "无人机被爆炸性武器武装了起来。", "zh-CN");
+                LanguageAPI.Add("ARMSRACE_NAME_TOKEN", "Arms Race");
+                LanguageAPI.Add("ARMSRACE_PICKUP_TOKEN", "Drones are equipped with explosive weaponry.");
+                LanguageAPI.Add("ARMSRACE_DESCRIPTION_TOKEN", "On drone action: 15% chance for drones and turrets to fire missiles and mortars,deals <style=cIsDamage>300%</style><style=cStack>(300% per stack)</style>damage.");
+                LanguageAPI.Add("ARMSRACE_LORE_TOKEN", "Drones are equipped with explosive weaponry.");
+                LanguageAPI.Add("ARMSRACE_NAME_TOKEN", "军备竞赛", "zh-CN");
+                LanguageAPI.Add("ARMSRACE_PICKUP_TOKEN", "无人机装备了爆炸性武器", "zh-CN");
+                LanguageAPI.Add("ARMSRACE_DESCRIPTION_TOKEN", "无人机和炮塔有15%概率发射导弹，造成<style=cIsDamage>300%</style><style=cStack>（每层增加300%）</style>的伤害。", "zh-CN");
+                LanguageAPI.Add("ARMSRACE_LORE_TOKEN", "无人机被爆炸性武器武装了起来。", "zh-CN");
 
                 ItemDef ArmsRaceDef = new ItemDef
                 {

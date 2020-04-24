@@ -40,14 +40,14 @@ namespace RoR1ItemRework
 
             private static void VialAsItem()
             {
-                R2API.AssetPlus.Languages.AddToken("VIAL_NAME_TOKEN", "Mysterious Vial");
-                R2API.AssetPlus.Languages.AddToken("VIAL_PICKUP_TOKEN", "Increased health regeneration.");
-                R2API.AssetPlus.Languages.AddToken("VIAL_DESCRIPTION_TOKEN", "Gain <style=clsHealing>1.2</style> <style=cStack>(+1.2 per stack)</style>HP regen/s.");
-                R2API.AssetPlus.Languages.AddToken("VIAL_LORE_TOKEN", "Apply to skin for a rapidly acting gel that contains both antiseptics and an agent to encourage protein synthesis!");
-                R2API.AssetPlus.Languages.AddToken("VIAL_NAME_TOKEN", "神秘药剂", "zh-CN");
-                R2API.AssetPlus.Languages.AddToken("VIAL_PICKUP_TOKEN", "增加生命值再生速度", "zh-CN");
-                R2API.AssetPlus.Languages.AddToken("VIAL_DESCRIPTION_TOKEN", "使<style=cIsHealing>基础生命值再生速度</style>提高<style=cIsHealing>1.2hp/s</style><style=cStack>（每层增加1.2hp/s）</style>。", "zh-CN");
-                R2API.AssetPlus.Languages.AddToken("VIAL_LORE_TOKEN", "涂在皮肤上，可快速作用，同时含有防腐剂和促进蛋白质合成的物质！", "zh-CN");
+                LanguageAPI.Add("VIAL_NAME_TOKEN", "Mysterious Vial");
+                LanguageAPI.Add("VIAL_PICKUP_TOKEN", "Increased health regeneration.");
+                LanguageAPI.Add("VIAL_DESCRIPTION_TOKEN", "Gain <style=clsHealing>1.2</style> <style=cStack>(+1.2 per stack)</style>HP regen/s.");
+                LanguageAPI.Add("VIAL_LORE_TOKEN", "Apply to skin for a rapidly acting gel that contains both antiseptics and an agent to encourage protein synthesis!");
+                LanguageAPI.Add("VIAL_NAME_TOKEN", "神秘药剂", "zh-CN");
+                LanguageAPI.Add("VIAL_PICKUP_TOKEN", "增加生命值再生速度", "zh-CN");
+                LanguageAPI.Add("VIAL_DESCRIPTION_TOKEN", "使<style=cIsHealing>基础生命值再生速度</style>提高<style=cIsHealing>1.2hp/s</style><style=cStack>（每层增加1.2hp/s）</style>。", "zh-CN");
+                LanguageAPI.Add("VIAL_LORE_TOKEN", "涂在皮肤上，可快速作用，同时含有防腐剂和促进蛋白质合成的物质！", "zh-CN");
 
                 ItemDef VialDef = new ItemDef
                 {
