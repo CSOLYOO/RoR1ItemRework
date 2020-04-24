@@ -11,7 +11,10 @@ namespace RoR1ItemRework.item
     {
         public static void CritInit()
         {
-            On.RoR2.CharacterBody.RecalculateStats += OnCritAdd;
+            if (RoR1ItemRework.cfgEnableRoR1Crit.Value)
+            {
+                On.RoR2.CharacterBody.RecalculateStats += OnCritAdd;
+            }
         }
 
         private static void OnCritAdd(On.RoR2.CharacterBody.orig_RecalculateStats orig, CharacterBody self)

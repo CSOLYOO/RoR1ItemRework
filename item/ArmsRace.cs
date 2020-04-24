@@ -80,7 +80,7 @@ namespace RoR1ItemRework
             {
                 LanguageAPI.Add("ARMSRACE_NAME_TOKEN", "Arms Race");
                 LanguageAPI.Add("ARMSRACE_PICKUP_TOKEN", "Drones are equipped with explosive weaponry.");
-                LanguageAPI.Add("ARMSRACE_DESCRIPTION_TOKEN", "On drone action: 15% chance for drones and turrets to fire missiles and mortars,deals <style=cIsDamage>300%</style><style=cStack>(300% per stack)</style>damage.");
+                LanguageAPI.Add("ARMSRACE_DESCRIPTION_TOKEN", "On drone action: <style=cIsDamage>15%</style> chance for drones and turrets to fire <style=cIsDamage>missiles</style>, deals <style=cIsDamage>300%</style> <style=cStack>(300% per stack)</style>damage.");
                 LanguageAPI.Add("ARMSRACE_LORE_TOKEN", "Drones are equipped with explosive weaponry.");
                 LanguageAPI.Add("ARMSRACE_NAME_TOKEN", "军备竞赛", "zh-CN");
                 LanguageAPI.Add("ARMSRACE_PICKUP_TOKEN", "无人机装备了爆炸性武器", "zh-CN");

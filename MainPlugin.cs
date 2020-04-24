@@ -22,7 +22,7 @@ namespace RoR1ItemRework
 
     public class RoR1ItemRework : BaseUnityPlugin
     {
-        private const string ModVer = "1.0.6";
+        private const string ModVer = "1.1.0";
         private const string ModName = "RoR1ItemRework";
         private const string ModGuid = "com.NetherCrowCSOLYOO.RoR1ItemRework";
         public static AssetBundleResourcesProvider Provider;
@@ -30,19 +30,12 @@ namespace RoR1ItemRework
         private const string ModPrefix = "@RoR1ItemRework:";
         public static ConfigFile RoRConfig { get; set; }
         public static ConfigEntry<bool> cfgEnableVial;
+        public static ConfigEntry<bool> cfgEnableRoR1Crit;
 
 
         public void Awake()
         {
-            RoRConfig = new ConfigFile(Paths.ConfigPath + "\\RoR1ItemRework.cfg", true);
-            cfgEnableVial = RoRConfig.Bind<bool>(
-                "Vial",
-                "EnablePermanentRegen",
-                true,
-                "If Enable, Vial's regen increment wont be affected by OnFire Buff or Difficulty"
-                );
-
-
+            Setconfig();
             using (System.IO.Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("RoR1ItemRework.ror1item"))
             {
                 Bundle = AssetBundle.LoadFromStream(stream);
@@ -56,7 +49,22 @@ namespace RoR1ItemRework
             item.ClassicCritThing.CritInit();
             ToughTimes.ToughTimesItemInit();
         }
-
+        private void Setconfig()
+        {
+            RoRConfig = new ConfigFile(Paths.ConfigPath + "\\RoR1ItemRework.cfg", true);
+            cfgEnableVial = RoRConfig.Bind<bool>(
+                "Vial",
+                "EnablePermanentRegen",
+                true,
+                "If Enable, Vial's regen increment wont be affected by OnFire Buff or Difficulty"
+                );
+            cfgEnableRoR1Crit = RoRConfig.Bind<bool>(
+                "General",
+                "EnableRoR1CritStack",
+                true,
+                "If Enable, Predatory Instincts and Harvester's Scythe will add crit by stacking"
+                );
+        }
     }
 
 

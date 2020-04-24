@@ -42,7 +42,7 @@ namespace RoR1ItemRework
             {
                 LanguageAPI.Add("VIAL_NAME_TOKEN", "Mysterious Vial");
                 LanguageAPI.Add("VIAL_PICKUP_TOKEN", "Increased health regeneration.");
-                LanguageAPI.Add("VIAL_DESCRIPTION_TOKEN", "Gain <style=clsHealing>1.2</style> <style=cStack>(+1.2 per stack)</style>HP regen/s.");
+                LanguageAPI.Add("VIAL_DESCRIPTION_TOKEN", "Gain <style=cIsHealing>1.2</style> <style=cStack>(+1.2 per stack)</style>HP regen/s.");
                 LanguageAPI.Add("VIAL_LORE_TOKEN", "Apply to skin for a rapidly acting gel that contains both antiseptics and an agent to encourage protein synthesis!");
                 LanguageAPI.Add("VIAL_NAME_TOKEN", "神秘药剂", "zh-CN");
                 LanguageAPI.Add("VIAL_PICKUP_TOKEN", "增加生命值再生速度", "zh-CN");

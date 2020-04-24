@@ -44,6 +44,7 @@ namespace RoR1ItemRework
                             if ((itemcount > 0) && (Util.CheckRoll(5f * damage.procCoefficient, AttackerMaster)))
                             {
                                 ProcChainMask procChainMask = damage.procChainMask;
+                                procChainMask.AddProc(ProcType.BleedOnHit);
                                 DotController.InflictDot(victim, damage.attacker, DotController.DotIndex.Blight, 3f * damage.procCoefficient, 3.33f * itemcount);
                                 VictimBody.AddTimedBuff(ThalliumDebuff, 3f * damage.procCoefficient);
                             }
@@ -112,7 +113,7 @@ namespace RoR1ItemRework
                     isDebuff = true,
                     name = "ThalliumDeBuff"
                 };
-                ThalliumDebuff = ItemAPI.Add(new CustomBuff(ThalliumBuffDef.name, ThalliumBuffDef));
+                ThalliumDebuff = BuffAPI.Add(new CustomBuff(ThalliumBuffDef));
             }
         }
 
