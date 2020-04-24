@@ -41,7 +41,7 @@ namespace RoR1ItemRework
                         if (Attacker && AttackerMaster)
                         {
                             int itemcount = Attacker.inventory.GetItemCount(ThalliumItemIndex);
-                            if ((itemcount > 0) && (Util.CheckRoll(5f * damage.procCoefficient, AttackerMaster)))
+                            if ((itemcount > 0) && (Util.CheckRoll(10f * damage.procCoefficient, AttackerMaster)))
                             {
                                 ProcChainMask procChainMask = damage.procChainMask;
                                 procChainMask.AddProc(ProcType.BleedOnHit);
