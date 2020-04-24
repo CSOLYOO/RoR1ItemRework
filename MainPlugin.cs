@@ -15,6 +15,7 @@ namespace RoR1ItemRework
         "ItemDropAPI",
         "ResourcesAPI",
         "AssetPlus",
+        "BuffAPI",
     })]
     [BepInPlugin(ModGuid, ModName, ModVer)]
 
@@ -26,23 +27,34 @@ namespace RoR1ItemRework
         public static AssetBundleResourcesProvider Provider;
         public static AssetBundle Bundle;
         private const string ModPrefix = "@RoR1ItemRework:";
+        public static ConfigFile RoRConfig { get; set; }
+        public static ConfigEntry<bool> cfgEnableVial;
+
 
         public void Awake()
         {
+            RoRConfig = new ConfigFile(Paths.ConfigPath + "\\RoR1ItemRework.cfg", true);
+            cfgEnableVial = RoRConfig.Bind<bool>(
+                "Vial",
+                "EnablePermanentRegen",
+                true,
+                "If Enable, Vial's regen increment wont be affected by OnFire Buff or Difficulty"
+                );
+
+
             using (System.IO.Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("RoR1ItemRework.ror1item"))
             {
                 Bundle = AssetBundle.LoadFromStream(stream);
                 Provider = new AssetBundleResourcesProvider(ModPrefix.Trim(':'), Bundle);
                 ResourcesAPI.AddProvider(Provider);
             };
-
             ArmsRace.ArmsRaceItem.ArmsRaceItemInit();
             ArmsRace.ArmsRaceItem.ArmsRaceItemHook();
             Vial.VialItem.VialItemInit();
-            Vial.VialItem.VialItemHook();
             Thallium.ThalliumItem.ThalliumItemInit();
             item.ClassicCritThing.CritInit();
         }
+
     }
 
 
