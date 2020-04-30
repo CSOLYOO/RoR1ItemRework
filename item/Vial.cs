@@ -76,9 +76,10 @@ namespace RoR1ItemRework
                 {
                     int count1 = self.inventory.GetItemCount(VialItemIndex);
                     float RegenIncrement = 0f;
+                    float LevelScale = self.level - 1f;
                     if (count1 > 0)
                     {
-                        RegenIncrement += 1.2f * count1;
+                        RegenIncrement += 1.2f * count1 * (1f + LevelScale *0.2f);
                     }
                     Reflection.SetPropertyValue(self, "regen", self.regen + RegenIncrement);
                 }
