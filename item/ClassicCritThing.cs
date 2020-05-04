@@ -5,7 +5,7 @@ using R2API.Utils;
 using RoR2;
 using UnityEngine;
 
-namespace RoR1ItemRework.item
+namespace RoR1ItemRework
 {
     class ClassicCritThing
     {

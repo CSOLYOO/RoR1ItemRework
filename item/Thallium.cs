@@ -11,7 +11,7 @@ namespace RoR1ItemRework
     {
         public class ThalliumItem
         {
-            public static ItemIndex ThalliumItemIndex;
+            private static ItemIndex ThalliumItemIndex;
             private const string ModPrefix = "@RoR1ItemRework:";
             private const string PrefabPath = ModPrefix + "Assets/Thallium.prefab";
             private const string IconPath = ModPrefix + "Assets/Thallium_Icon.png";

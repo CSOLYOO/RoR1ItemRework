@@ -46,8 +46,9 @@ namespace RoR1ItemRework
             ArmsRace.ArmsRaceItem.ArmsRaceItemHook();
             Vial.VialItem.VialItemInit();
             Thallium.ThalliumItem.ThalliumItemInit();
-            item.ClassicCritThing.CritInit();
+            ClassicCritThing.CritInit();
             ToughTimes.ToughTimesItemInit();
+            Leech.LeechInit();
         }
         private void Setconfig()
         {

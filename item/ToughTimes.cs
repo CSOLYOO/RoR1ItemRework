@@ -10,7 +10,7 @@ namespace RoR1ItemRework
 {
     class ToughTimes
     {
-        public static ItemIndex ToughTimesItemIndex;
+        private static ItemIndex ToughTimesItemIndex;
         private const string ModPrefix = "@RoR1ItemRework:";
         private const string PrefabPath = ModPrefix + "Assets/ToughTimes.prefab";
         private const string IconPath = ModPrefix + "Assets/ToughTimes_Icon.png";

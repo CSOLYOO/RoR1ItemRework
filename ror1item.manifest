@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 336694061
+CRC: 835362403
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: dc75eaf2bdfc0705496affe9f181feee
+    Hash: b9bbb700083a42e906520c73707434b8
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 21747e4ee48f36c7a65f9afbfd77f392
+    Hash: 73d6b31b63930f1bb32498c2458a9a49
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -25,6 +25,8 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 48
   Script: {instanceID: 0}
+- Class: 212
+  Script: {instanceID: 0}
 - Class: 213
   Script: {instanceID: 0}
 Assets:
@@ -36,5 +38,7 @@ Assets:
 - Assets/ToughTimes_Icon.png
 - Assets/ArmsRace.prefab
 - Assets/Thallium.prefab
+- Assets/Massive_Leech_Icon.png
+- Assets/Massive_Leech.prefab
 - Assets/Vial.prefab
 Dependencies: []
