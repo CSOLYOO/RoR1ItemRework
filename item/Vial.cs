@@ -13,7 +13,7 @@ namespace RoR1ItemRework
     {
         public class VialItem
         {
-            public static ItemIndex VialItemIndex;
+            private static ItemIndex VialItemIndex;
             private const string ModPrefix = "@RoR1ItemRework:";
             private const string PrefabPath = ModPrefix + "Assets/Vial.prefab";
             private const string IconPath = ModPrefix + "Assets/Vial_Icon.png";
