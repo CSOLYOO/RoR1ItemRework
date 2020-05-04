@@ -1,10 +1,5 @@
 ﻿using R2API;
 using RoR2;
-using Mono.Cecil.Cil;
-using MonoMod.Cil;
-using System;
-using UnityEngine;
-using R2API.Utils;
 
 namespace RoR1ItemRework
 {

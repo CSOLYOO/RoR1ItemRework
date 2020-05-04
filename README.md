@@ -18,6 +18,10 @@ Some Code refence ThinkInvis's code of ClassicItems.
 #### Tier 3
 - Thallium: Chance to slow and damage enemies over time.
 
+#### Equipment
+- Massive Leech: Grant massive life on hit for 10 seconds.
+
+
 #### Other Change
 - Make the Predatory Instincts and Harvester's Scythe add crit by stacking like they did in RoR1.
 
@@ -38,6 +42,7 @@ Some Code refence ThinkInvis's code of ClassicItems.
 -1.2.0
   - Add a new voxel model for Tough Times. Thanks to @TheTimesweeper#5727 !
   - Now the vial's regen increment will be scaled by level.
+  - Add Massive Leech! It can heal you a lot when activited.
 
 -1.1.1
   - Found that Thallium's damage dont meet expectations. So change the proc chance to 10%, not 5%.
@@ -65,14 +70,6 @@ Some Code refence ThinkInvis's code of ClassicItems.
   - Mod Released
 
 
-
-
-
-
-
-
-
-
 # 中国语版本
 
 增加了一些雨中冒险1的道具，并且我重做了他们。
@@ -93,6 +90,9 @@ Some Code refence ThinkInvis's code of ClassicItems.
 #### Tier 3
 - 铊：几率减速敌人，并使得敌人中毒。
 
+#### 主动装备
+- 庞大水蛭：在10秒内，攻击汲取巨额生命。
+
 #### 其他更改
 - 使得 捕食本能 与 收割者镰刀 像雨中冒险1一样叠加暴击。
 
@@ -112,6 +112,7 @@ Some Code refence ThinkInvis's code of ClassicItems.
 -1.2.0
   - 为艰难时刻增加了体素模型，感谢 @TheTimesweeper#5727 ！
   - 现在，神秘药剂的再生增加将按级别进行缩放。
+  - 增加了 庞大水蛭， 激活后可以让你的攻击汲取血量。
 
 -1.1.1
   - 铊的伤害和触发率不如预期。 提高触发概率至10%。
