@@ -17,10 +17,10 @@ Some Code refence ThinkInvis's code of ClassicItems.
 
 #### Tier 3
 - Thallium: Chance to slow and damage enemies over time.
+- Repulsion Armor: After taking damage, reflect all attacks for seconds.
 
 #### Equipment
 - Massive Leech: Grant massive life on hit for 10 seconds.Heal will increase with your level up.
-
 
 #### Other Change
 - Make the Predatory Instincts and Harvester's Scythe add crit by stacking like they did in RoR1.
@@ -29,7 +29,7 @@ Some Code refence ThinkInvis's code of ClassicItems.
 - Add more Item and Equipment.
 - Add config setting.
 - Do some balance thing.
-- Add new voxel model for MassiveLeech.
+- Add new voxel model for MassiveLeech and Repulsion Armor.
 - ~~Add new voxel model for Thallium.~~
 
 ## Special Thank
@@ -39,6 +39,9 @@ Some Code refence ThinkInvis's code of ClassicItems.
 - @ThinkInvis
 
 ## ChangeLog
+
+####1.3.0
+- Add Repulsion Armor. It can bring you lots of armor when you get damaged.
 
 ####1.2.0
 - Add a new voxel model for Tough Times. Thanks to @TheTimesweeper#5727 !
@@ -91,6 +94,7 @@ Some Code refence ThinkInvis's code of ClassicItems.
 
 #### Tier 3
 - 铊：几率减速敌人，并使得敌人中毒。
+- 斥力装甲：受到伤害后，在几秒内降低受到的攻击。
 
 #### 主动装备
 - 庞大水蛭：在10秒内，攻击汲取巨额生命；吸血值随等级上涨。
@@ -102,7 +106,7 @@ Some Code refence ThinkInvis's code of ClassicItems.
 - 增加更多装备和物品。
 - 增加可配置的选项。
 - 做一些平衡。
-- 为庞大水蛭增加模型。
+- 为庞大水蛭和斥力装甲增加模型。
 - ~~给铊换个体素模型。~~
 
 ## 特别感谢
@@ -112,6 +116,9 @@ Some Code refence ThinkInvis's code of ClassicItems.
 - @ThinkInvis
 
 ## 更新日志
+
+####1.3.0
+- 增加了 斥力装甲，它可以在你受到多次伤害后保护你。
 
 ####1.2.0
 - 为艰难时刻增加了体素模型，感谢 @TheTimesweeper#5727 ！

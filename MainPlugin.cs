@@ -21,7 +21,7 @@ namespace RoR1ItemRework
 
     public class RoR1ItemRework : BaseUnityPlugin
     {
-        private const string ModVer = "1.2.0";
+        private const string ModVer = "1.3.0";
         private const string ModName = "RoR1ItemRework";
         private const string ModGuid = "com.NetherCrowCSOLYOO.RoR1ItemRework";
         public static AssetBundleResourcesProvider Provider;
@@ -61,7 +61,10 @@ namespace RoR1ItemRework
             {
                 ToughTimes.ToughTimesItemInit();
             }
-
+            if (cfgRepulsionArmor.Value)
+            {
+                RepulsionArmor.RepulsionArmorItemInit();
+            }
 
         }
         private void Setconfig()
@@ -109,6 +112,12 @@ namespace RoR1ItemRework
                 true,
                 "Enable the Tough Times"
                 );
+            cfgRepulsionArmor = RoRConfig.Bind<bool>(
+                "Repulsion Armor",
+                "Enable",
+                true,
+                "Enable the Repulsion Armor"
+                );
         }
 
         public static ConfigEntry<bool> cfgEnableVial;
@@ -118,6 +127,7 @@ namespace RoR1ItemRework
         public static ConfigEntry<bool> cfgArmsrace;
         public static ConfigEntry<bool> cfgToughtime;
         public static ConfigEntry<bool> cfgThallium;
+        public static ConfigEntry<bool> cfgRepulsionArmor;
     }
 
 
